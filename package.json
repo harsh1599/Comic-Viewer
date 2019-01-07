@@ -1,0 +1,25 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "A simple website for viewing comics and photos",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harsh1599/Comic-Viewer.git"
+  },
+  "author": "Harsh Prabhu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harsh1599/Comic-Viewer/issues"
+  },
+  "homepage": "https://github.com/harsh1599/Comic-Viewer#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.2"
+  }
+}

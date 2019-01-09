@@ -1,0 +1,20 @@
+<% include ./partials/header %>
+	<div class = "ui container">
+		<div class = "ui container">
+			<% comic.pages.forEach(function(page){%>
+				<% page.images.forEach(function(image){ %>
+					<img class = "myImage" src = "<%= image.imagePath%>" style = "width:100%">
+				<%})%>
+			<%});%>
+		</div>
+	</div>
+	<button id = "buttonLeft" onClick = "showDivs(-1)">buttonLeft</button>
+	<button id = "buttonRight" onClick = "showDivs(1)">buttonRight</button>
+<script type = "text/javascript" src = "/js/navbar.js"></script>
+<script>
+	showDivs(0);
+</script>
+<% include ./partials/footer %>
+
+
+

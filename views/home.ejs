@@ -1,3 +1,26 @@
 <% include ./partials/header %>
-	
+<div class = "ui container">
+	<table class="ui celled table">
+	  <thead>
+	    <tr>
+	      <th>Sr</th>
+	      <th>Name</th>
+	      <th>Date</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    	<% for(var i = 0 ; i < comics.length; i ++){%>
+	    		<tr>
+		    		<td><%= i+1 %></td>
+		    		<td><a href = "/comics/<%=comics[i]._id%>"><%= comics[i].title%></a></td>
+		    	</tr>
+	    	<%}%>
+	    </tr>
+	  </tbody>
+	</table>
+</div>
+
+
+
+
 <% include ./partials/footer %>

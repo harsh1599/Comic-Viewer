@@ -1,19 +1,22 @@
-var home = document.getElementById("home");
-// var messages = document.getElementById("messages");
-// var friends = document.getElementById("friends");
-home.addEventListener("click",function(){
-	this.classList.add("active");
-	// messages.classList.remove("active");
-	// friends.classList.remove("active");
+var content = document.querySelectorAll(".myImage");
+var buttonLeft = document.querySelector("#buttonLeft");
+var buttonRight = document.querySelector("#buttonRight");
+var check = 1 ;
+var showDivs = function(n){
+	content.forEach(function(element){
+		element.style.display = "none";
+	});
+	check+=n;
+	if(check>content.length){
+		check=1;
+	} else if(check<1){
+		check = content.length();
+	}
+	content[check-1].style.display = "block";
+}
+buttonLeft.addEventListener("click", function(){
+	console.log("left button was clicked");
 });
-// messages.addEventListener("click",function(){
-// 	this.classList.add("active");
-// 	home.classList.remove("active");
-// 	friends.classList.remove("active");
-// });
-// friends.addEventListener("click",function(){
-// 	this.classList.add("active");
-// 	messages.classList.remove("active");
-// 	home.classList.remove("active");
-// });
-
+buttonRight.addEventListener("click", function(){
+	console.log("right button was clicked");
+});

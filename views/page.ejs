@@ -2,18 +2,16 @@
 	<div class = "ui container">
 		<div class = "ui container">
 			<% comic.pages.forEach(function(page){%>
-				<% page.images.forEach(function(image){ %>
-					<img class = "myImage" src = "<%= image.imagePath%>" style = "width:100%">
-				<%})%>
+				<img class = "myImage" src = "<%= page.image%>" style = "width:100%">
 			<%});%>
+			<div id = "buttons">
+				<button id = "buttonLeft" onClick = "showDivs(-1)"><i class = "angle double left icon"></i></button>
+				<button id = "buttonRight" onClick = "showDivs(1)"><i class = "angle double right icon"></i></button>
+			</div>
 		</div>
 	</div>
-	<button id = "buttonLeft" onClick = "showDivs(-1)">buttonLeft</button>
-	<button id = "buttonRight" onClick = "showDivs(1)">buttonRight</button>
 <script type = "text/javascript" src = "/js/navbar.js"></script>
-<script>
-	showDivs(0);
-</script>
+<script>showDivs(0);</script>
 <% include ./partials/footer %>
 
 

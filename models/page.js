@@ -1,12 +1,7 @@
 var mongoose = require("mongoose");
-var Image = require("./images");
 var pageSchema = new mongoose.Schema({
-	images:	[
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref:"Image"
-		}
-	],
+	title:String,
+	image:String,
 	text:String
 });
 var Page = mongoose.model("Page", pageSchema);

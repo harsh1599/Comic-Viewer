@@ -1,15 +1,45 @@
 <% include ./partials/header %>
+	<style>
+		.myClass{
+			display:block;
+		}
+	</style>
 	<div class = "ui container">
 		<div class = "ui container">
 			<% comic.pages.forEach(function(page){%>
 				<img class = "myImage" src = "<%= page.image%>" style = "width:100%">
+				<p class = "myParagraph"><%= page.text%></p>
 			<%});%>
 			<div id = "buttons">
 				<button id = "buttonLeft" onClick = "showDivs(-1)"><i class = "angle double left icon"></i></button>
 				<button id = "buttonRight" onClick = "showDivs(1)"><i class = "angle double right icon"></i></button>
 			</div>
 		</div>
+		<div class = "ui container">
+			<form method = "POST" action = "/comics/<%=comic._id%>/comments/new">
+				<input type = "text" name = "comment" placeholder = "Add a comment...">
+				<input type = "submit" name = "Add" value = "Add">
+			</form>
+		</div>
+		<div class = "ui container">
+			<%comic.comments.forEach(function(comment){%>
+				<%= comment.name %><br>
+				<p><%= comment.text %></p>
+				<div><button id = "expandReply">Reply</button></div>
+				<form id = "form" action = "/comics/<%= comic._id%>/comments/<%=comment._id%>/new" method = "POST" style = "display:none">
+					<input type = "text" name = "reply" placeholder = "reply to <%= comment.name%>">
+					<input type = "submit" value = "Reply">
+				</form>
+				<div>
+					<% comment.comments.forEach(function(innerComment){%>
+						<div>	<%=innerComment.name%></div>
+						  <p>	<%=innerComment.text%></div>
+					<%})%>
+				</div>
+			<%})%>
+		</div>
 	</div>
+<script type = "text/javascript" src = "/js/subComment.js"></script>
 <script type = "text/javascript" src = "/js/navbar.js"></script>
 <script>showDivs(0);</script>
 <% include ./partials/footer %>

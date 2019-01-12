@@ -1,0 +1,19 @@
+#landingJumbotron{
+	padding-left:2em;
+}
+.heading{
+	padding:0.5em;
+}
+body{
+	background:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ03u95AVoOnpFz1NqDD6hM-dRvqtLUVnAcgZ-YH4L66X-nqlzOVQ");
+	padding-top:5em;
+}
+.container-fluid{
+	margin-left:1em;
+	margin-right:1em;
+}
+.row div div{
+	background-color: #e9ecef;
+	font-size:20px;
+	padding:1em;
+}

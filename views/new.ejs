@@ -1,9 +1,5 @@
-<% include ./partials/header %>
-
-	
-	div class = "ui containter">
-		<div class = "ui container">
-			<form class="ui form" action = "/comics/new" method = "POST" enctype = "multipart/form-data">
+<% include ./partials/header %
+			<form action = "/comics/new" method = "POST" enctype = "multipart/form-data">
 				<div class = "field">
 					<label>image</label>
 					<input type = "file" name = "myImage">
@@ -17,7 +13,5 @@
 			  	</div>
 			</form>
 			<a href = "/comics/tmp"><button id = "Add"> Add </button></a>
-		</div>
-	</div>
 <script type = "javascript" src = "/js/download.js"></script>
 <% include ./partials/footer %>

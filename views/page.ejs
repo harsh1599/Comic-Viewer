@@ -1,43 +1,69 @@
 <% include ./partials/header %>
 	<style>
-		.myClass{
-			display:block;
+		.myImage{
+			width:100%;
+			height:600px;
+		}
+		body{
+			background:white;
+			margin-top:6em;
+		}
+		img{
+			margin-top:1em;
+			margin-bottom:0.5em;
+			border-radius:10px;
+		}
+		.comicContent{
+			padding:1em;
+			padding-left:1.2em;
+			padding-right:1.2em;
+			background:white;
+			border-radius:10px;
+			border-left:10px solid red;
+			border-right:10px solid red;
+		}
+		#buttonLeft{
+			float:right;
 		}
 	</style>
-	<div class = "ui container">
-		<div class = "ui container">
-			<% comic.pages.forEach(function(page){%>
-				<img class = "myImage" src = "<%= page.image%>" style = "width:100%">
+	<div class = "container">
+		<% comic.pages.forEach(function(page){%>
+			<img class = "myImage img-fluid" src = "<%= page.image%>">
+			<div class = "comicContent">
 				<p class = "myParagraph"><%= page.text%></p>
-			<%});%>
-			<div id = "buttons">
-				<button id = "buttonLeft" onClick = "showDivs(-1)"><i class = "angle double left icon"></i></button>
-				<button id = "buttonRight" onClick = "showDivs(1)"><i class = "angle double right icon"></i></button>
+			</div>
+		<%});%>
+		<div id = "buttons" class = "container">
+			<div class = "row">
+				<div class = "col-md-6 col-lg-6 col-sm-6 col-xs-6">
+				<button id = "buttonLeft" onClick = "showDivs(-1)"><span class="glyphicon glyphicon-chevron-left"></span></button>
+				</div>
+				<div class = "col-md-6 col-lg-6 col-sm-6 col-xs-6">
+					<button id = "buttonRight" onClick = "showDivs(1)"><span class="glyphicon glyphicon-chevron-right"></span></button>
+				</div>
 			</div>
 		</div>
-		<div class = "ui container">
+		<div class = "container-fluid" >
 			<form method = "POST" action = "/comics/<%=comic._id%>/comments/new">
 				<input type = "text" name = "comment" placeholder = "Add a comment...">
 				<input type = "submit" name = "Add" value = "Add">
 			</form>
 		</div>
-		<div class = "ui container">
-			<%comic.comments.forEach(function(comment){%>
-				<%= comment.name %><br>
-				<p><%= comment.text %></p>
-				<div><button id = "expandReply">Reply</button></div>
-				<form id = "form" action = "/comics/<%= comic._id%>/comments/<%=comment._id%>/new" method = "POST" style = "display:none">
-					<input type = "text" name = "reply" placeholder = "reply to <%= comment.name%>">
-					<input type = "submit" value = "Reply">
-				</form>
-				<div>
-					<% comment.comments.forEach(function(innerComment){%>
-						<div>	<%=innerComment.name%></div>
-						  <p>	<%=innerComment.text%></div>
-					<%})%>
-				</div>
-			<%})%>
-		</div>
+		<%comic.comments.forEach(function(comment){%>
+			<%= comment.name %><br>
+			<p><%= comment.text %></p>
+			<div><button id = "expandReply">Reply</button></div>
+			<form id = "form" action = "/comics/<%= comic._id%>/comments/<%=comment._id%>/new" method = "POST" style = "display:none">
+				<input type = "text" name = "reply" placeholder = "reply to <%= comment.name%>">
+				<input type = "submit" value = "Reply">
+			</form>
+			<div>
+				<% comment.comments.forEach(function(innerComment){%>
+					<div>	<%=innerComment.name%></div>
+					  <p>	<%=innerComment.text%></div>
+				<%})%>
+			</div>
+		<%})%>
 	</div>
 <script type = "text/javascript" src = "/js/subComment.js"></script>
 <script type = "text/javascript" src = "/js/navbar.js"></script>

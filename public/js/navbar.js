@@ -1,5 +1,5 @@
 var content = document.querySelectorAll(".myImage");
-var paragraph = document.querySelectorAll(".myParagraph");
+var paragraph = document.querySelectorAll(".comicContent");
 var buttonLeft = document.querySelector("#buttonLeft");
 var buttonRight = document.querySelector("#buttonRight");
 var check = 1 ;

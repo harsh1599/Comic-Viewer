@@ -1,5 +1,8 @@
 var express = require("express");
 var app = express();
+var passport = require("passport");
+var localStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
 var bodyParser = require("body-parser");
 var multer = require('multer');
 var path = require("path");
@@ -8,6 +11,7 @@ var mongoose = require("mongoose");
 var Comic = require("./models/comic");
 var Page = require("./models/page");
 var Comment = require("./models/comments");
+var User = require("./models/user");
 var tmpStorage = [];
 var title ="";
 var storage = multer.diskStorage({
@@ -26,6 +30,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.get("/", function(req, res){
 	res.render("landing");
 })
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 app.get("/comics", function(req, res){
 	Comic.find({},function(err, comics){
 		if(err){
@@ -34,6 +40,9 @@ app.get("/comics", function(req, res){
 			res.render("home", {comics:comics});
 		}
 	});
+})
+app.get("/register",function(req, res){
+	res.render("register");
 })
 app.get("/comics/create/new", function(req, res){
 	res.render("new");
@@ -128,4 +137,4 @@ app.post("/comics/create",function(req, res){
 });
 app.listen(3000,function(req, res){
 	console.log("The server's running");
-})
+});

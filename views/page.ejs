@@ -22,8 +22,8 @@
 			border-left:10px solid red;
 			border-right:10px solid red;
 		}
-		#buttonLeft{
-			float:right;
+		#buttons{
+			text-align:center;
 		}
 	</style>
 	<div class = "container">
@@ -34,14 +34,8 @@
 			</div>
 		<%});%>
 		<div id = "buttons" class = "container">
-			<div class = "row">
-				<div class = "col-md-6 col-lg-6 col-sm-6 col-xs-6">
-				<button id = "buttonLeft" onClick = "showDivs(-1)"><span class="glyphicon glyphicon-chevron-left"></span></button>
-				</div>
-				<div class = "col-md-6 col-lg-6 col-sm-6 col-xs-6">
-					<button id = "buttonRight" onClick = "showDivs(1)"><span class="glyphicon glyphicon-chevron-right"></span></button>
-				</div>
-			</div>
+			<button id = "buttonLeft" onClick = "showDivs(-1)"><span class="glyphicon glyphicon-chevron-left"></span></button>
+			<button id = "buttonRight" onClick = "showDivs(1)"><span class="glyphicon glyphicon-chevron-right"></span></button>
 		</div>
 		<div class = "container-fluid" >
 			<form method = "POST" action = "/comics/<%=comic._id%>/comments/new">
